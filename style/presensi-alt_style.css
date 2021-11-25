@@ -1,0 +1,506 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 78px;
+    background: #0A2558;
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar .logo-details {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.sidebar .logo-details .icon {
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.sidebar .logo-details .logo_name {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name {
+    opacity: 1;
+}
+
+.sidebar .logo-details #btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: all 0.4s ease;
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open .logo-details #btn {
+    text-align: right;
+}
+
+.sidebar i {
+    color: #fff;
+    height: 60px;
+    min-width: 50px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.sidebar .nav-list {
+    margin-top: 20px;
+    height: 100%;
+}
+
+.sidebar li {
+    position: relative;
+    margin: 8px 0;
+    list-style: none;
+}
+
+.sidebar li .tooltip {
+    position: absolute;
+    top: -20px;
+    left: calc(100% + 15px);
+    z-index: 3;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: 0s;
+}
+
+.sidebar li:hover .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sidebar.open li .tooltip {
+    display: none;
+}
+
+.sidebar input {
+    font-size: 15px;
+    color: #FFF;
+    font-weight: 400;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    width: 50px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    background: #1d1b31;
+}
+
+
+.sidebar li a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.sidebar-file li a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    background: #0C172D;
+}
+
+.sidebar li a:hover {
+    background: #FFF;
+}
+
+.sidebar li a .links_name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+}
+
+.sidebar.open li a .links_name {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i {
+    transition: all 0.5s ease;
+    color: #11101D;
+}
+
+.sidebar li i {
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+.sidebar li.profile {
+    position: fixed;
+    height: 60px;
+    width: 78px;
+    left: 0;
+    bottom: -8px;
+    padding: 10px 14px;
+    background: #0C172D;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.sidebar.open li.profile {
+    width: 250px;
+}
+
+.sidebar li .profile-details {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.sidebar li img {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.sidebar li.profile .name,
+.sidebar li.profile .job {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.sidebar li.profile .job {
+    font-size: 12px;
+}
+
+.sidebar .profile #log_out {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #1d1b31;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 0px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.open .profile #log_out {
+    width: 50px;
+    background: none;
+}
+
+
+.home-section {
+  position: relative;
+  background: #e4e9f7;
+  min-height: 120vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.sidebar.open ~ .home-section {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+.home-section .text {
+  display: inline-block;
+  color: #11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px;
+}
+
+.uppertittle-section {
+  width: 100%;
+  height: 60px;
+  background-color: #0c172d;
+  display: inline-block;
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 10px 0px 10px 20px;
+}
+
+/*=============== Tambah Absensi 1 . html ===============*/
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+ 
+@media screen and (max-width:600px) {
+  .column {
+      width: 100%;
+  }
+
+}
+
+#rcorners1 {
+margin-top: 25px;
+margin-right: 150px;
+margin-left: 50px;
+border-radius: 50px 50px 0px 0px;
+background: #0A2558;
+padding: 20px; 
+width: 400px;
+height: 50px;  
+}
+
+a{
+  color: white;
+  font-size: large;
+}
+
+#rcorners2 {
+margin-bottom: 25px;
+margin-right: 150px;
+margin-left: 50px;
+border-radius: 0px 0px 50px 50px;
+background: #387DFF;
+padding: 20px; 
+width: 400px;
+height: 150px;  
+}
+
+.btn-lg{
+  margin: 10px;
+  padding: 12px 23px;
+  background-color: #387dff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px/5px;
+  float: right;
+}
+
+.btn-lg:hover{
+    background-color: #175cc4;
+    color: white;
+    text-decoration: none;
+}
+
+/*=============== Tambah Absensi 2 . html ===============*/
+
+.home-section .header-title {
+  background-color: #fff;
+  height: 70px;
+  margin-top: -5px;
+  margin-left: -5px;
+  width: 80%;
+  border-bottom-right-radius: 10px;
+  border: 2px solid #0c172d;
+  float: left;
+}
+
+.home-section .header-title h3 {
+  width: 100%;
+  height: 60px;
+  color: #0c172d;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 0 0 10px 35px;
+}
+
+/*===== Form Container  =====*/
+
+.home-section .form-container {
+  width: 78%;
+  margin: 10px 0 0 10px;
+  float: left;
+}
+
+.form-body {
+    margin: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.form-block {
+  display: inline-block;
+  margin-left: 20px;
+  padding: 10px 0;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 3px solid #0c172d;
+}
+
+.full-width {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 0 30px;
+}
+
+.full-width .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.half-width {
+  width: 50%;
+  display: block;
+  float: left;
+  padding: 0 10px;
+}
+
+.mid-width {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 0 200px;
+}
+
+.col-full {
+  width: 100%;
+  float: left;
+  padding: 0 10px;
+}
+
+.col-half {
+  width: 50%;
+  float: left;
+  padding: 0 10px;
+}
+
+label {
+  width: 100%;
+  float: left;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 15px 0 5px;
+}
+
+.input-field {
+  width: 100%;
+  float: left;
+  line-height: 1.6;
+  padding: 4px 8px;
+  font-size: 16px;
+  border: 2px solid #0c172d;
+}
+
+.textarea-field {
+  width: 100%;
+  float: left;
+  line-height: 1.6;
+  padding: 4px 8px 56px;
+  font-size: 16px;
+  border: 2px solid #0c172d;
+  resize: none;
+}
+
+.box-mid {
+  width: 100%;
+  float: right;
+  padding: 50px 0 30px;
+  text-align: center;
+}
+
+.btn-buat {
+  margin: 10px;
+  padding: 12px 23px;
+  background-color: #387dff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+.btn-buat:hover {
+  background-color: #175cc4;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-batal {
+  margin: 0 10px;
+  padding: 10px 30px;
+  background-color: #fff;
+  color: #ababab;
+  border: 2px solid #ababab;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+.btn-batal:hover {
+  background-color: red;
+  border: 2px solid red;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 420px) {
+  .sidebar li .tooltip {
+    display: none;
+  }
+}
