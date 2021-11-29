@@ -56,7 +56,7 @@ if (empty($_SESSION['login_user']))
                         <a href="edit_password_dosen.php">
                         <?php } ?>
                         <?php if ($_SESSION['level_user'] == "Mahasiswa") { ?>
-                            <a href="profil_mahasiswa.php">
+                            <a href="edit_password_mahasiswa.php">
                             <?php } ?>
                             <i class='bx bx-cog'></i>
                             <span class="links_name">Setting</span>
