@@ -4,12 +4,12 @@ if (!empty($_POST["save_update"])) {
     require_once("koneksi.php");
 
     $sql = $pdo_conn->prepare("UPDATE mahasiswa SET nim_mahasiswa = :nim_mahasiswa, nama_mahasiswa = :nama_mahasiswa, 
-    foto_mahasiswa = :foto_mahasiswa, email_mahasiswa = :email_mahasiswa, gender_mahasiswa = :gender_mahasiswa, 
-    alamat_mahasiswa = :alamat_mahasiswa, fakultas_mahasiswa = :fakultas_mahasiswa, prodi_mahasiswa = :prodi_mahasiswa WHERE nim_mahasiswa = " . $_GET["nim"]);
+    email_mahasiswa = :email_mahasiswa, gender_mahasiswa = :gender_mahasiswa, 
+    alamat_mahasiswa = :alamat_mahasiswa, fakultas_mahasiswa = :fakultas_mahasiswa, prodi_mahasiswa = :prodi_mahasiswa 
+    WHERE nim_mahasiswa = " . $_GET["nim"]);
     $result = $sql->execute(array(
         ':nim_mahasiswa' => $_POST['nim'],
         ':nama_mahasiswa' => $_POST['nama'],
-        ':foto_mahasiswa' => '',
         ':email_mahasiswa' => $_POST['email'],
         ':gender_mahasiswa' => $_POST['gender'],
         ':alamat_mahasiswa' => $_POST['alamat'],

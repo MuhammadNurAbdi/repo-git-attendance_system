@@ -33,11 +33,16 @@ if (empty($_SESSION['login_user']))
                 </li>
             </div>
             <li>
-                <a href="user.php">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">User</span>
-                </a>
-                <span class="tooltip">User</span>
+                <?php if ($_SESSION['level_user'] == "Admin") { ?>
+                    <a href="user.php">
+                    <?php } ?>
+                    <?php if ($_SESSION['level_user'] == "Dosen") { ?>
+                        <a href="profil_dosen.php">
+                        <?php } ?>
+                        <i class='bx bx-user'></i>
+                        <span class="links_name">User</span>
+                        </a>
+                        <span class="tooltip">User</span>
             </li>
 
             <li>

@@ -3,12 +3,11 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once("koneksi.php");
 
-    $sql = $pdo_conn->prepare("INSERT INTO dosen (nip_dosen, nama_dosen, foto_dosen, email_dosen, gender_dosen, alamat_dosen, fakultas_dosen, prodi_dosen) 
-    VALUES (:nip_dosen, :nama_dosen, :foto_dosen, :email_dosen, :gender_dosen, :alamat_dosen, :fakultas_dosen, :prodi_dosen)");
+    $sql = $pdo_conn->prepare("INSERT INTO dosen (nip_dosen, nama_dosen, email_dosen, gender_dosen, alamat_dosen, fakultas_dosen, prodi_dosen) 
+    VALUES (:nip_dosen, :nama_dosen, :email_dosen, :gender_dosen, :alamat_dosen, :fakultas_dosen, :prodi_dosen)");
     $result = $sql->execute(array(
         ':nip_dosen' => $_POST['nip'],
         ':nama_dosen' => $_POST['nama'],
-        ':foto_dosen' => '',
         ':email_dosen' => $_POST['email'],
         ':gender_dosen' => $_POST['gender'],
         ':alamat_dosen' => $_POST['alamat'],
