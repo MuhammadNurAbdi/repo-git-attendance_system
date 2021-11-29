@@ -50,7 +50,7 @@ if (empty($_SESSION['login_user']))
 
             <li>
                 <?php if ($_SESSION['level_user'] == "Admin") { ?>
-                    <a href="user.php">
+                    <a href="edit_password_admin.php">
                     <?php } ?>
                     <?php if ($_SESSION['level_user'] == "Dosen") { ?>
                         <a href="edit_password_dosen.php">

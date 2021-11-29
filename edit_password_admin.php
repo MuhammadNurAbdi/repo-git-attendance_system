@@ -65,7 +65,7 @@ if (empty($_SESSION['login_user']))
         <div class="uppertittle-section">User</div>
         <!-- Header Judul -->
         <div class="header-title1">
-            <h3>Change Password - Dosen</h3>
+            <h3>Change Password - Admin</h3>
         </div>
 
         <!-- Sisi Kiri -->
@@ -78,11 +78,14 @@ if (empty($_SESSION['login_user']))
                 </ul>
             </div>
 
+            <?php
+            require_once("logic/koneksi.php");
+            ?>
 
             <div class="tab-content">
                 <!-- Form Data Pribadi -->
                 <div id="data-pribadi" class="tab-pane fade in active">
-                    <form action="logic/edit_password_dosen_query.php" id="form-data" class="form-block" method="post">
+                    <form action="logic/edit_password_admin_query.php" id="form-data" class="form-block" method="post">
                         <div class="full-width">
                             <div class="half-width">
                                 <div class="col-full">
