@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -39,36 +43,11 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Enter your password" name="InputPassword" required />
               </div>
+              <span style="color: red;"><?php echo $_SESSION['wrong'] ?? '';
+                                        unset($_SESSION['wrong']); ?>
+              </span>
               <div class="button input-box">
                 <input type="submit" value="Submit" />
-              </div>
-              <div class="text sign-up-text">
-                Fogot your password? <label for="flip">Reset it now</label>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="signup-form">
-          <div class="title">New Password</div>
-          <form action="#">
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required />
-              </div>
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Create new password" required />
-              </div>
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Confirm your password" required />
-              </div>
-              <div class="button input-box">
-                <input type="submit" value="Submit" />
-              </div>
-              <div class="text sign-up-text">
-                Remember your password? <label for="flip">Login now</label>
               </div>
             </div>
           </form>

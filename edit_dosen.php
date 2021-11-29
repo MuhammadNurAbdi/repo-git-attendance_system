@@ -149,7 +149,7 @@ if (empty($_SESSION['login_user']))
                                 </div>
                             </div>
                             <div class="box-mid">
-                                <input name="save_update" type="submit" class="btn-simpan" value="Simpan">
+                                <input id="save_update" name="save_update" type="submit" class="btn-simpan" value="Simpan">
                                 <a href="list_dosen.php" class="btn-batal">Batal</a>
                             </div>
                         </div>
@@ -183,13 +183,18 @@ if (empty($_SESSION['login_user']))
         }
 
         var check = function() {
-            if (document.getElementById('password').value ==
-                document.getElementById('confirm_password').value) {
+            var password = document.getElementById('password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
+            const button = document.getElementById('save_update')
+            if (password ==
+                confirm_password) {
                 document.getElementById('message').style.color = 'green';
-                document.getElementById('message').innerHTML = 'matching';
+                document.getElementById('message').innerHTML = 'Matching';
+                button.disabled = false;
             } else {
                 document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerHTML = 'not matching';
+                document.getElementById('message').innerHTML = 'Not matching';
+                button.disabled = true;
             }
         }
     </script>

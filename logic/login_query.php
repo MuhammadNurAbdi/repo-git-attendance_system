@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ));
     $row = $sql->fetch(PDO::FETCH_ASSOC);
     if (empty($row['username'])) {
-
-        header("location: login.php");
+        $_SESSION['wrong'] = "Username atau Password salah";
+        header("location: ../login.php");
     } else {
         if ($row['level'] == 1) {
             $_SESSION['login_user'] = $_POST['InputUsername'];
