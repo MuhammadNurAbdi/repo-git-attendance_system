@@ -70,7 +70,7 @@ if (empty($_SESSION['login_user']))
                         <div class="job"><?php echo "$_SESSION[level_user]"; ?></div>
                     </div>
                 </div>
-                <a href="logout.php">
+                <a href="logic/logout.php">
                     <i class='bx bx-log-out' id="log_out"></i>
                 </a>
             </li>

@@ -33,19 +33,35 @@ if (empty($_SESSION['login_user']))
                 </li>
             </div>
             <li>
-                <a href="user.php">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">User</span>
-                </a>
-                <span class="tooltip">User</span>
+                <?php if ($_SESSION['level_user'] == "Admin") { ?>
+                    <a href="user.php">
+                    <?php } ?>
+                    <?php if ($_SESSION['level_user'] == "Dosen") { ?>
+                        <a href="profil_dosen.php">
+                        <?php } ?>
+                        <?php if ($_SESSION['level_user'] == "Mahasiswa") { ?>
+                            <a href="profil_mahasiswa.php">
+                            <?php } ?>
+                            <i class='bx bx-user'></i>
+                            <span class="links_name">User</span>
+                            </a>
+                            <span class="tooltip">User</span>
             </li>
 
             <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="links_name">Setting</span>
-                </a>
-                <span class="tooltip">Setting</span>
+                <?php if ($_SESSION['level_user'] == "Admin") { ?>
+                    <a href="edit_password_admin.php">
+                    <?php } ?>
+                    <?php if ($_SESSION['level_user'] == "Dosen") { ?>
+                        <a href="edit_password_dosen.php">
+                        <?php } ?>
+                        <?php if ($_SESSION['level_user'] == "Mahasiswa") { ?>
+                            <a href="edit_password_mahasiswa.php">
+                            <?php } ?>
+                            <i class='bx bx-cog'></i>
+                            <span class="links_name">Setting</span>
+                            </a>
+                            <span class="tooltip">Setting</span>
             </li>
             <li class="profile">
                 <div class="profile-details">
@@ -54,7 +70,7 @@ if (empty($_SESSION['login_user']))
                         <div class="job"><?php echo "$_SESSION[level_user]"; ?></div>
                     </div>
                 </div>
-                <a href="logout.php">
+                <a href="logic/logout.php">
                     <i class='bx bx-log-out' id="log_out"></i>
                 </a>
             </li>
