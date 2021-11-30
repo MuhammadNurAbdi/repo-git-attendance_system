@@ -36,7 +36,7 @@ session_start();
           <form action="logic/login_query.php" method="post">
             <div class="input-boxes">
               <div class="input-box">
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-user"></i>
                 <input type="text" placeholder="Enter your username" name="InputUsername" required />
               </div>
               <div class="input-box">

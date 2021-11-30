@@ -90,9 +90,14 @@ if (empty($_SESSION['login_user']))
                 if (!empty($result)) {
                     foreach ($result as $row) {
                 ?>
-                        <div class="column">
-                            <p id="rcorners1"><?php echo $row["nama_kelas"]; ?></p>
-                            <p id="rcorners2"></p>
+                        <div>
+                            <div class="column">
+                                <p id="rcorners1"><?php echo $row["nama_kelas"]; ?> </p>
+                                <p id="rcorners2"> <a href="#">
+                                        <button class="btn-hapus"> Hapus Kelas
+                                        </button>
+                                    </a></p>
+                            </div>
                         </div>
                 <?php
                     }
