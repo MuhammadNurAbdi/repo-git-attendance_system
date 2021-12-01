@@ -157,12 +157,6 @@ if (empty($_SESSION['login_user']))
             </div>
         </div>
         </div>
-        <!-- Sisi Kanan -->
-        <div class="picprofile">
-            <div class="pic-wrapper">
-                <img src="https://i.kinja-img.com/gawker-media/image/upload/gd8ljenaeahpn0wslmlz.jpg" class="image-cover" />
-            </div>
-        </div>
 
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
