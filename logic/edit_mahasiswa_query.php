@@ -26,8 +26,9 @@ if (!empty($_POST["save_update"])) {
     else
         $pass = md5($_POST['confirm_password']);
 
-    $sql = $pdo_conn->prepare("UPDATE akun SET username = :username, password = :password WHERE username = " . $_GET["nim"]);
+    $sql = $pdo_conn->prepare("UPDATE akun SET username = :username, password = :password WHERE username = :old_username");
     $result = $sql->execute(array(
+        ':old_username' => $_GET["nim"],
         ':username' => $_POST['nim'],
         ':password' => $pass,
     ));
