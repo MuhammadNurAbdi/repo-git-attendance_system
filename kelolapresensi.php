@@ -116,7 +116,6 @@ if (empty($_SESSION['login_user']))
                         <td><?php echo $row['status_presensi'] ?></td>
                         <td>
                             <input type="button" onclick="location.href='edit_kelolapresensi.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>&kode_status=<?php echo $row['kode_status_presensi'] ?>';" class="btn-edit" value="Edit">
-                            <input type="button" onclick="location.href='logic/delete_presensi.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="btn-hapus" value="Hapus">
                         </td>
                     </tr>
                 <?php }
