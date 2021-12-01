@@ -2,7 +2,10 @@
 session_start();
 if (empty($_SESSION['login_user']))
     header('location: login.php');
+if ($_SESSION['level_user'] != "Admin")
+    header('location: index.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

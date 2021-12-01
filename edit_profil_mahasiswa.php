@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION['login_user']))
     header('location: login.php');
+if ($_SESSION['level_user'] != "Mahasiswa")
+    header('location: index.php');
 ?>
 
 <!DOCTYPE html>

@@ -3,6 +3,8 @@ session_start();
 require_once("logic/koneksi.php");
 if (empty($_SESSION['login_user']))
     header('location: login.php');
+if ($_SESSION['level_user'] != "Mahasiswa")
+    header('location: index.php');
 ?>
 
 <!DOCTYPE html>

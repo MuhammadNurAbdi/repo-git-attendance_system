@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION['login_user']))
     header('location: login.php');
+if ($_SESSION['level_user'] != "Admin")
+    header('location: index.php');
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +131,7 @@ if (empty($_SESSION['login_user']))
 
                         <div class="button">
                             <a href="index.php" style="margin: 3px; ">Cancel</a>
-                            <input id="submit" onclick="tes();" type="submit" value="Daftar" style="margin: 3px;">
+                            <input id="submit" type="submit" value="Daftar" style="margin: 3px;">
                         </div>
 
                     </form>
