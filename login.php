@@ -19,7 +19,7 @@ session_start();
       <div class="front">
         <div class="text">
           <span class="text-1">DAS-Student <br />
-            <p>DIGITAL ATTENDANCE SYSTEM STUDENT</p>
+            <p>DIGITAL ATTENDANCE SYSTEM - STUDENT</p>
           </span>
         </div>
       </div>
