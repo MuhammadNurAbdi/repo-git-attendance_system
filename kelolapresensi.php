@@ -99,7 +99,7 @@ if ($_SESSION['level_user'] != "Dosen")
         <div class="uppertittle-section">Pertemuan ke-<?php echo $row_pertemuan[0]['pertemuan'] ?><a href="presensi.php?id=<?php echo $_GET['id'] ?>" class="btn-add">Kembali</a></div>
         <table id="customers">
             <tr>
-                <td colspan="4" class="title">Daftar Pertemuan</td>
+                <td colspan="4" class="title">Daftar Mahasiswa</td>
             </tr>
             <tr>
                 <th>NIM</th>
