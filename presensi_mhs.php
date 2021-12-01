@@ -159,7 +159,7 @@ if (empty($_SESSION['login_user']))
                                 if ($currentdate >= date('Y-m-d H:i', strtotime($row['waktu_mulai'])) and $currentdate < date('Y-m-d H:i', strtotime($row['waktu_akhir']))) { ?>
                                     <input type="button" onclick="location.href='logic/presensi_mhs_query.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="button" value="Hadir"><br>
                             <?php } else if ($currentdate < date('Y-m-d H:i', strtotime($row['waktu_mulai']))) {
-                                    echo "halo";
+                                    echo "";
                                 } else if ($currentdate > date('Y-m-d H:i', strtotime($row['waktu_akhir']))) {
                                     echo $rowpresensi[$index]['status_presensi'];
                                 }
