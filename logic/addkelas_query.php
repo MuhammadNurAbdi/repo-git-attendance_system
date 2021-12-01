@@ -30,4 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($result)) {
         header("location: ../index.php");
     }
+} else {
+    header("location: ../index.php");
 }

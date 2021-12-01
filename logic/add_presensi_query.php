@@ -60,4 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($result)) {
         header("location: ../presensi.php?id=" . $_POST['kode_kelas']);
     }
+} else {
+    header("location: ../index.php");
 }

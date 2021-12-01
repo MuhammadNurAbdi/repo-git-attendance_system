@@ -1,6 +1,6 @@
 <?php
 
-if (!empty($_POST["save_update"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once("koneksi.php");
     session_start();
 
@@ -26,4 +26,6 @@ if (!empty($_POST["save_update"])) {
         $_SESSION['wrong'] = "Password salah";
         header("location: ../edit_password_admin.php");
     }
+} else {
+    header("location: ../index.php");
 }

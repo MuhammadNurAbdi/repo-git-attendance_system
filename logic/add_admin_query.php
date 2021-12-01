@@ -13,4 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($result)) {
         header("location: ../user.php");
     }
+} else {
+    header("location: ../index.php");
 }

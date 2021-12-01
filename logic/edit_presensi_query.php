@@ -1,6 +1,6 @@
 <?php
 
-if (!empty($_POST["save_update"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once("koneksi.php");
 
     $sql = $pdo_conn->prepare("UPDATE presensi SET pertemuan = :pertemuan, waktu_mulai = :waktu_mulai, waktu_akhir = :waktu_akhir WHERE kode_presensi = :kode_presensi");
@@ -14,4 +14,6 @@ if (!empty($_POST["save_update"])) {
     if (!empty($result)) {
         header("location: ../presensi.php?id=" . $_POST['kode_kelas']);
     }
+} else {
+    header("location: ../index.php");
 }
