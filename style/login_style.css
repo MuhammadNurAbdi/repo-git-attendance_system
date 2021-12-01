@@ -41,6 +41,10 @@ body {
   transform-style: preserve-3d;
 }
 
+.container p {
+  font-size: 20px;
+}
+
 .container .cover::before {
   content: "";
   position: absolute;
@@ -62,7 +66,7 @@ body {
   transform: rotateY(180deg);
 }
 
-.container #flip:checked ~ .cover {
+.container #flip:checked~.cover {
   transform: rotateY(-180deg);
 }
 
@@ -243,11 +247,11 @@ body {
     display: none;
   }
 
-  .container #flip:checked ~ .forms .signup-form {
+  .container #flip:checked~.forms .signup-form {
     display: block;
   }
 
-  .container #flip:checked ~ .forms .login-form {
+  .container #flip:checked~.forms .login-form {
     display: none;
   }
 }
