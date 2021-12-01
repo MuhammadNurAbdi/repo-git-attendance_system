@@ -76,6 +76,14 @@ if (empty($_SESSION['login_user']))
         </ul>
     </div>
 
+    <?php
+    require_once("logic/koneksi.php");
+    $data = $pdo_conn->prepare("SELECT * FROM dosen"); //query untuk mengambil data tabel
+    $data->execute();
+    $result = $data->fetchAll();
+
+    ?>
+
     <section class="home-section">
         <header style="background-color: black; height: 60px;">
             <div class="uppertittle-section">Kelas Baru
@@ -109,14 +117,15 @@ if (empty($_SESSION['login_user']))
                             </div>
                             <div class="input-box">
                                 <span class="details">Dosen Pengampu</span>
-                                <input type="text" placeholder="Masukkan dosen" name="InputDosen" required>
+                                <input id="nip" type="text" placeholder="Masukkan nip dosen" name="InputDosen" onkeyup='check();' required>
+                                <span id='message'></span>
                             </div>
 
                         </div>
 
                         <div class="button">
                             <a href="index.php" style="margin: 3px; ">Cancel</a>
-                            <input type="submit" value="Daftar" style="margin: 3px;">
+                            <input id="submit" type="submit" value="Daftar" style="margin: 3px;">
                         </div>
 
                     </form>
@@ -146,6 +155,30 @@ if (empty($_SESSION['login_user']))
             } else {
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
             }
+        }
+
+        function check() {
+            var nip = document.getElementById('nip').value;
+            const button = document.getElementById('submit')
+            <?php if (!empty($result)) {
+                foreach ($result as $row) { ?>
+                    var nip_data = <?php echo $row['nip_dosen'] ?>
+                    if (nip == nip_data) {
+                        document.getElementById('message').style.color = '';
+                        document.getElementById('message').innerHTML = '';
+                        button.disabled = false;
+                        break;
+                    } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerHTML = 'Dosen tidak ditemukan';
+                        button.disabled = true;
+                    }
+                <?php }
+            } else { ?>
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Tidak ada dosen di database, silakan tambahkan terlebih dahulu';
+                button.disabled = true;
+            <?php } ?>
         }
     </script>
 </body>
