@@ -104,15 +104,15 @@ if ($_SESSION['level_user'] != "Admin")
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="nama_lengkap">Nama Lengkap</label>
-                                    <input type="text" name="nama" placeholder="Masukan Nama" class="input-field" required />
+                                    <input type="text" maxlength="25" name="nama" placeholder="Masukan Nama" class="input-field" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIM</label>
-                                    <input type="text" name="nim" placeholder="Masukan NIM" class="input-field" required />
+                                    <input type="text" maxlength="13" name="nim" placeholder="Masukan NIM" class="input-field" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
-                                    <input type="text" name="email" placeholder="Masukan E-mail" class="input-field" required />
+                                    <input type="text" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="gender">Jenis Kelamin</label>
@@ -127,26 +127,26 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="password_lama">Masukkan Password</label>
-                                    <input type="password" id="password" name="password" placeholder="Masukan Password" class="input-field" onkeyup='check();' required />
+                                    <input type="password" maxlength="255" id="password" name="password" placeholder="Masukan Password" class="input-field" onkeyup='check();' required />
                                 </div>
                                 <div class="col-full">
                                     <label for="retype-pasword">Re-Type Password</label>
-                                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password" class="input-field" onkeyup='check();' required />
+                                    <input type="password" maxlength="255" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password" class="input-field" onkeyup='check();' required />
                                     <span id='message'></span>
                                 </div>
                             </div>
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="alamat">Alamat Tinggal Saat ini</label>
-                                    <textarea class="textarea-field" name="alamat" id="textarea" required></textarea>
+                                    <textarea class="textarea-field" maxlength="255" name="alamat" id="textarea" required></textarea>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_fakultas">Fakultas</label>
-                                    <input type="text" name="fakultas" placeholder="Masukan nama Fakultas" class="input-field" required />
+                                    <input type="text" maxlength="20" name="fakultas" placeholder="Masukan nama Fakultas" class="input-field" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_prodi">Program Studi</label>
-                                    <input type="text" name="prodi" placeholder="Masukan Nama Prodi" class="input-field" required />
+                                    <input type="text" maxlength="30" name="prodi" placeholder="Masukan Nama Prodi" class="input-field" required />
                                 </div>
                             </div>
                             <div class="box-mid">

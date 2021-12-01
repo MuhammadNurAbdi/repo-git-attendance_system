@@ -94,16 +94,16 @@ if ($_SESSION['level_user'] != "Admin")
                         <div class="half-width">
                             <div class="col-full">
                                 <label for="nama_lengkap">Username</label>
-                                <input type="text" name="username" placeholder="Masukan Username" class="input-field" required />
+                                <input type="text" maxlength="25" name="username" placeholder="Masukan Username" class="input-field" required />
                             </div>
 
                             <div class="col-full">
                                 <label for="password_lama">Masukkan Password</label>
-                                <input type="password" id="password" name="password" placeholder="Masukan Password" class="input-field" onkeyup='check();' required />
+                                <input type="password" maxlength="255" id="password" name="password" placeholder="Masukan Password" class="input-field" onkeyup='check();' required />
                             </div>
                             <div class="col-full">
                                 <label for="retype-pasword">Re-Type Password</label>
-                                <input type="password" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password" class="input-field" onkeyup='check();' required />
+                                <input type="password" maxlength="255" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password" class="input-field" onkeyup='check();' required />
                                 <span id='message'></span>
                             </div>
                         </div>

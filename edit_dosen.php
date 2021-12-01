@@ -115,15 +115,15 @@ if ($_SESSION['level_user'] != "Admin")
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="nama_lengkap">Nama Lengkap</label>
-                                    <input type="text" name="nama" placeholder="Masukan Nama" class="input-field" value="<?php echo $result[0]["nama_dosen"]; ?>" required />
+                                    <input type="text" maxlength="25" name="nama" placeholder="Masukan Nama" class="input-field" value="<?php echo $result[0]["nama_dosen"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIP</label>
-                                    <input type="text" name="nip" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nip_dosen"]; ?>" required />
+                                    <input type="text" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nip_dosen"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
-                                    <input type="text" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_dosen"]; ?>" required />
+                                    <input type="text" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_dosen"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="gender">Jenis Kelamin</label>
@@ -144,26 +144,26 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="password_lama">Masukkan Password</label>
-                                    <input type="password" id="password" name="password" placeholder="Masukan Password" class="input-field" onkeyup='check();' value="<?php echo $result_akun[0]["password"]; ?>" required />
+                                    <input type="password" maxlength="255" id="password" name="password" placeholder="Masukan Password" class="input-field" onkeyup='check();' value="<?php echo $result_akun[0]["password"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="retype-pasword">Re-Type Password</label>
-                                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password" class="input-field" onkeyup='check();' value="<?php echo $result_akun[0]["password"]; ?>" required />
+                                    <input type="password" maxlength="255" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password" class="input-field" onkeyup='check();' value="<?php echo $result_akun[0]["password"]; ?>" required />
                                     <span id='message'></span>
                                 </div>
                             </div>
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="alamat">Alamat Tinggal Saat ini</label>
-                                    <textarea class="textarea-field" name="alamat" id="textarea" required><?php echo $result[0]["alamat_dosen"]; ?></textarea>
+                                    <textarea class="textarea-field" maxlength="255" name="alamat" id="textarea" required><?php echo $result[0]["alamat_dosen"]; ?></textarea>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_fakultas">Fakultas</label>
-                                    <input type="text" name="fakultas" placeholder="Masukan nama Fakultas" class="input-field" value="<?php echo $result[0]["fakultas_dosen"]; ?>" required />
+                                    <input type="text" name="fakultas" maxlength="20" placeholder="Masukan nama Fakultas" class="input-field" value="<?php echo $result[0]["fakultas_dosen"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_prodi">Program Studi</label>
-                                    <input type="text" name="prodi" placeholder="Masukan Nama Prodi" class="input-field" value="<?php echo $result[0]["prodi_dosen"]; ?>" required />
+                                    <input type="text" name="prodi" maxlength="30" placeholder="Masukan Nama Prodi" class="input-field" value="<?php echo $result[0]["prodi_dosen"]; ?>" required />
                                 </div>
                             </div>
                             <div class="box-mid">

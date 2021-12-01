@@ -38,11 +38,11 @@ session_start();
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your username" name="InputUsername" required />
+                <input type="text" maxlength="25" placeholder="Enter your username" name="InputUsername" required />
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" name="InputPassword" required />
+                <input type="password" maxlength="255" placeholder="Enter your password" name="InputPassword" required />
               </div>
               <span style="color: red;"><?php echo $_SESSION['wrong'] ?? '';
                                         unset($_SESSION['wrong']); ?>

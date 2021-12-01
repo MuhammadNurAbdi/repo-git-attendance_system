@@ -103,11 +103,11 @@ if ($_SESSION['level_user'] != "Admin")
                         <div class="user-details">
                             <div class="input-box">
                                 <span class="details">Mata Kuliah</span>
-                                <input type="text" placeholder="Masukkan mata kuliah" name="InputMatkul" required>
+                                <input type="text" maxlength="16" placeholder="Masukkan mata kuliah" name="InputMatkul" required>
                             </div>
                             <div class="input-box">
                                 <span class="details">Hari</span>
-                                <input type="text" placeholder="Masukkan hari" name="InputHari" required>
+                                <input type="text" maxlength="16" placeholder="Masukkan hari" name="InputHari" required>
                             </div>
                             <div class="input-box">
                                 <span class="details">Jam</span>
@@ -119,14 +119,13 @@ if ($_SESSION['level_user'] != "Admin")
                             </div>
                             <div class="input-box">
                                 <span class="details">Ruang Kelas</span>
-                                <input type="text" placeholder="Masukkan kelas" name="InputRuang" required>
+                                <input type="text" maxlength="20" placeholder="Masukkan kelas" name="InputRuang" required>
                             </div>
                             <div class="input-box">
                                 <span class="details">NIP Dosen Pengampu</span>
-                                <input id="nip" type="text" placeholder="Masukkan nip dosen" name="InputDosen" onkeyup='check();' required>
+                                <input id="nip" maxlength="18" type="text" placeholder="Masukkan nip dosen" name="InputDosen" onkeyup='check();' required>
                                 <span id='message'></span>
                             </div>
-
                         </div>
 
                         <div class="button">

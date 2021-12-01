@@ -111,18 +111,18 @@ if ($_SESSION['level_user'] != "Admin")
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="password_lama">Masukkan Password Lama</label>
-                                    <input type="password" id="password_old" name="password_old" placeholder="Masukan password lama" class="input-field" required />
+                                    <input type="password" maxlength="255" id="password_old" name="password_old" placeholder="Masukan password lama" class="input-field" required />
                                     <span style="color: red;"><?php echo $_SESSION['wrong'] ?? '';
                                                                 unset($_SESSION['wrong']); ?>
                                     </span>
                                 </div>
                                 <div class="col-full">
                                     <label for="password_lama">Masukkan Password Baru</label>
-                                    <input type="password" id="password_new" name="password_new" placeholder="Masukan password baru" class="input-field" onkeyup='check();' required />
+                                    <input type="password" maxlength="255" id="password_new" name="password_new" placeholder="Masukan password baru" class="input-field" onkeyup='check();' required />
                                 </div>
                                 <div class="col-full">
                                     <label for="retype-pasword">Re-Type Password Baru</label>
-                                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password baru" class="input-field" onkeyup='check();' required />
+                                    <input type="password" maxlength="255" id="confirm_password" name="confirm_password" placeholder="Masukan kembali password baru" class="input-field" onkeyup='check();' required />
                                     <span id='message'></span>
                                 </div>
                                 <div class="box-mid">

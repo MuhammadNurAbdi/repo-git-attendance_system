@@ -100,7 +100,7 @@ if ($_SESSION['level_user'] != "Dosen")
                     <div class="title">Tambah Presensi Baru - <?php echo $result[0]['nama_kelas'] ?></div>
                     <div class="col-full">
                         <label for="tanggal">Pertemuan Ke</label>
-                        <input type="number" name="pertemuan" placeholder="" class="input-field" value="<?php echo $result_presensi[0]['pertemuan'] ?>" required />
+                        <input type="number" min="1" max="2147483647" name="pertemuan" placeholder="" class="input-field" value="<?php echo $result_presensi[0]['pertemuan'] ?>" required />
                     </div>
                     <div class="col-full">
                         <label for="tanggal">Mulai Presensi</label>

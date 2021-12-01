@@ -112,15 +112,15 @@ if ($_SESSION['level_user'] != "Mahasiswa")
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="nama_lengkap">Nama Lengkap</label>
-                                    <input type="text" name="nama" placeholder="Masukan Nama" class="input-field" value="<?php echo $result[0]["nama_mahasiswa"]; ?>" required />
+                                    <input type="text" maxlength="25" name="nama" placeholder="Masukan Nama" class="input-field" value="<?php echo $result[0]["nama_mahasiswa"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIM</label>
-                                    <input type="text" name="nim" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nim_mahasiswa"]; ?>" required disabled />
+                                    <input type="text" maxlength="13" name="nim" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nim_mahasiswa"]; ?>" required disabled />
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
-                                    <input type="text" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_mahasiswa"]; ?>" required />
+                                    <input type="text" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_mahasiswa"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="gender">Jenis Kelamin</label>
@@ -143,15 +143,15 @@ if ($_SESSION['level_user'] != "Mahasiswa")
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="alamat">Alamat Tinggal Saat ini</label>
-                                    <textarea class="textarea-field" name="alamat" id="textarea" required><?php echo $result[0]["alamat_mahasiswa"]; ?></textarea>
+                                    <textarea class="textarea-field" maxlength="255" name="alamat" id="textarea" required><?php echo $result[0]["alamat_mahasiswa"]; ?></textarea>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_fakultas">Fakultas</label>
-                                    <input type="text" name="fakultas" placeholder="Masukan nama Fakultas" class="input-field" value="<?php echo $result[0]["fakultas_mahasiswa"]; ?>" required />
+                                    <input type="text" maxlength="20" name="fakultas" placeholder="Masukan nama Fakultas" class="input-field" value="<?php echo $result[0]["fakultas_mahasiswa"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_prodi">Program Studi</label>
-                                    <input type="text" name="prodi" placeholder="Masukan Nama Prodi" class="input-field" value="<?php echo $result[0]["prodi_mahasiswa"]; ?>" required />
+                                    <input type="text" maxlength="30" name="prodi" placeholder="Masukan Nama Prodi" class="input-field" value="<?php echo $result[0]["prodi_mahasiswa"]; ?>" required />
                                 </div>
                             </div>
                             <div class="box-mid">
