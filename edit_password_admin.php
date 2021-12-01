@@ -80,7 +80,7 @@ if (empty($_SESSION['login_user']))
     </div>
 
     <section class="home-section">
-        <div class="uppertittle-section">User</div>
+        <div class="uppertittle-section">Setting</div>
         <!-- Header Judul -->
         <div class="header-title1">
             <h3>Change Password - Admin</h3>
