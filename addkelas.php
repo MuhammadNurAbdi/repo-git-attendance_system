@@ -77,11 +77,15 @@ if (empty($_SESSION['login_user']))
     </div>
 
     <?php
-    require_once("logic/koneksi.php");
-    $data = $pdo_conn->prepare("SELECT * FROM dosen"); //query untuk mengambil data tabel
-    $data->execute();
-    $result = $data->fetchAll();
 
+
+    function getSubjects()
+    {
+        require_once("logic/koneksi.php");
+        $data = $pdo_conn->prepare("SELECT nip_dosen FROM dosen"); //query untuk mengambil data tabel
+        $data->execute();
+        return json_encode($data->fetchall());
+    }
     ?>
 
     <section class="home-section">
@@ -116,7 +120,7 @@ if (empty($_SESSION['login_user']))
                                 <input type="text" placeholder="Masukkan kelas" name="InputRuang" required>
                             </div>
                             <div class="input-box">
-                                <span class="details">Dosen Pengampu</span>
+                                <span class="details">NIP Dosen Pengampu</span>
                                 <input id="nip" type="text" placeholder="Masukkan nip dosen" name="InputDosen" onkeyup='check();' required>
                                 <span id='message'></span>
                             </div>
@@ -125,7 +129,7 @@ if (empty($_SESSION['login_user']))
 
                         <div class="button">
                             <a href="index.php" style="margin: 3px; ">Cancel</a>
-                            <input id="submit" type="submit" value="Daftar" style="margin: 3px;">
+                            <input id="submit" onclick="tes();" type="submit" value="Daftar" style="margin: 3px;">
                         </div>
 
                     </form>
@@ -133,7 +137,7 @@ if (empty($_SESSION['login_user']))
             </div>
         </div>
     </section>
-    <script>
+    <script type="text/javascript">
         let sidebar = document.querySelector(".sidebar");
         let closeBtn = document.querySelector("#btn");
         let searchBtn = document.querySelector(".bx-search");
@@ -158,27 +162,34 @@ if (empty($_SESSION['login_user']))
         }
 
         function check() {
+            var nip_data = <?php echo getSubjects(); ?>;
             var nip = document.getElementById('nip').value;
-            const button = document.getElementById('submit')
-            <?php if (!empty($result)) {
-                foreach ($result as $row) { ?>
-                    var nip_data = <?php echo $row['nip_dosen'] ?>
-                    if (nip == nip_data) {
-                        document.getElementById('message').style.color = '';
-                        document.getElementById('message').innerHTML = '';
-                        button.disabled = false;
-                        break;
-                    } else {
-                        document.getElementById('message').style.color = 'red';
-                        document.getElementById('message').innerHTML = 'Dosen tidak ditemukan';
-                        button.disabled = true;
-                    }
-                <?php }
-            } else { ?>
+            const button = document.getElementById('submit');
+            var BreakException = {};
+            if (nip_data) {
+                try {
+                    nip_data.forEach(row => {
+                        console.log(nip);
+                        console.log(row["nip_dosen"]);
+                        if (nip === row["nip_dosen"]) {
+                            document.getElementById('message').style.color = 'green';
+                            document.getElementById('message').innerHTML = 'Dosen terdaftar di database';
+                            button.disabled = false;
+                            throw BreakException;
+                        } else {
+                            document.getElementById('message').style.color = 'red';
+                            document.getElementById('message').innerHTML = 'Dosen tidak ditemukan';
+                            button.disabled = true;
+                        }
+                    });
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            } else {
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Tidak ada dosen di database, silakan tambahkan terlebih dahulu';
                 button.disabled = true;
-            <?php } ?>
+            }
         }
     </script>
 </body>
