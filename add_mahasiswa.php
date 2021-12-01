@@ -187,7 +187,7 @@ if (empty($_SESSION['login_user']))
         }
 
         var check = function() {
-            var password = document.getElementById('password_new').value;
+            var password = document.getElementById('password').value;
             var confirm_password = document.getElementById('confirm_password').value;
             const button = document.getElementById('save_update')
             if (password ==

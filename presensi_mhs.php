@@ -117,10 +117,13 @@ if (empty($_SESSION['login_user']))
     ));
     $rowkelas = $kelas->fetchAll();
 
-    $status = $pdo_conn->prepare("SELECT status_presensi FROM status_presensi WHERE nim_mahasiswa = :nim AND kode_presensi = :kode_presensi");
+    $status = $pdo_conn->prepare("SELECT status_presensi FROM status_presensi 
+    JOIN presensi USING(kode_presensi)
+    WHERE nim_mahasiswa = :nim AND kode_kelas = :kode_kelas
+    ORDER BY pertemuan DESC");
     $status->execute(array(
         ':nim' => $_SESSION['nim'],
-        ':kode_presensi' => $result[0]['kode_presensi']
+        ':kode_kelas' => $_GET['id']
     ));
     $rowpresensi = $status->fetchAll();
     ?>
@@ -140,8 +143,10 @@ if (empty($_SESSION['login_user']))
                 <th width="10%">Aksi</th>
             </tr>
             <?php
+            date_default_timezone_set('Asia/Makassar');
+            $currentdate = date('Y-m-d H:i', time());
             if (!empty($result)) {
-                foreach ($result as $row) {
+                foreach ($result as $index => $row) {
             ?>
                     <tr>
                         <td><?php echo $row['pertemuan'] ?></td>
@@ -150,10 +155,16 @@ if (empty($_SESSION['login_user']))
                             <br> <?php echo tgl_indo(date('d-m-Y H:i', strtotime($row['waktu_akhir']))) ?>
                         </td>
                         <td>
-                            <?php if ($rowpresensi[0]['status_presensi'] == 'Tanpa Keterangan') { ?>
-                                <input type="button" onclick="location.href='logic/presensi_mhs_query.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="button" value="Hadir"><br>
-                            <?php } else {
-                                echo $rowpresensi[0]['status_presensi'];
+                            <?php if ($rowpresensi[$index]['status_presensi'] == 'Tanpa Keterangan') {
+                                if ($currentdate >= date('Y-m-dH:i', strtotime($row['waktu_mulai'])) and $currentdate < date('Y-m-d H:i', strtotime($row['waktu_akhir']))) { ?>
+                                    <input type="button" onclick="location.href='logic/presensi_mhs_query.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="button" value="Hadir"><br>
+                            <?php } else if ($currentdate < date('Y-m-d H:i', strtotime($row['waktu_mulai']))) {
+                                    echo "halo";
+                                } else if ($currentdate > date('Y-m-d H:i', strtotime($row['waktu_akhir']))) {
+                                    echo $rowpresensi[$index]['status_presensi'];
+                                }
+                            } else {
+                                echo $rowpresensi[$index]['status_presensi'];
                             }
                             ?>
                         </td>

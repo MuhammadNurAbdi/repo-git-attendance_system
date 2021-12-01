@@ -94,7 +94,7 @@ if (empty($_SESSION['login_user']))
                             <div class="column">
                                 <p id="rcorners1"><?php echo $row["nama_kelas"]; ?> </p>
                                 <p id="rcorners2"> <a href="#">
-                                        <button class="btn-hapus"> Hapus Kelas
+                                        <button onclick="location.href='logic/delete_kelas.php?id=<?php echo $row['kode_kelas']; ?>';" class="btn-hapus"> Hapus Kelas
                                         </button>
                                     </a></p>
                             </div>
