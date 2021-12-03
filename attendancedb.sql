@@ -30,9 +30,10 @@ CREATE TABLE `akun` (
 /*Data for the table `akun` */
 
 insert  into `akun`(`username`,`password`,`level`) values 
+('12345','202cb962ac59075b964b07152d234b70',2),
+('12346','202cb962ac59075b964b07152d234b70',2),
 ('1910817110002','202cb962ac59075b964b07152d234b70',3),
 ('1910817110008','202cb962ac59075b964b07152d234b70',3),
-('1910817310005','202cb962ac59075b964b07152d234b70',2),
 ('1910817310007','202cb962ac59075b964b07152d234b70',3),
 ('admin','21232f297a57a5a743894a0e4a801fc3',1),
 ('zeventier','202cb962ac59075b964b07152d234b70',1);
@@ -55,7 +56,8 @@ CREATE TABLE `dosen` (
 /*Data for the table `dosen` */
 
 insert  into `dosen`(`nip_dosen`,`nama_dosen`,`email_dosen`,`gender_dosen`,`alamat_dosen`,`fakultas_dosen`,`prodi_dosen`) values 
-('1910817310005','Irvan Aulia Luthfi','1910817310005@mhs.ulm.ac.id','Laki-laki','Jl. Budi Utomo','Teknik','Teknologi Informasi');
+('12345','Siti','siti@gmail.com','Perempuan','jl. sini','teknik','sipil'),
+('12346','Irvan','irvanaulialuthfi@gmail.com','Laki-laki','Jl. Kebenaran','Teknik','Teknologi Informasi');
 
 /*Table structure for table `kelas` */
 
@@ -76,12 +78,6 @@ CREATE TABLE `kelas` (
 
 /*Data for the table `kelas` */
 
-insert  into `kelas`(`kode_kelas`,`nama_kelas`,`hari`,`jam_awal`,`jam_akhir`,`ruang`,`nip_dosen`) values 
-('MK177','Komputasi Awan','Selasa','01:49:00','06:49:00','B15','1910817310005'),
-('MK328','Aljabar','Sabtu','06:23:00','07:23:00','A6','1910817310005'),
-('MK688','Pemrograman','Senin','01:42:00','02:42:00','A15','1910817310005'),
-('MK745','Basis Data','Rabu','04:50:00','06:50:00','C15','1910817310005');
-
 /*Table structure for table `mahasiswa` */
 
 DROP TABLE IF EXISTS `mahasiswa`;
@@ -89,7 +85,6 @@ DROP TABLE IF EXISTS `mahasiswa`;
 CREATE TABLE `mahasiswa` (
   `nim_mahasiswa` varchar(13) NOT NULL,
   `nama_mahasiswa` varchar(25) NOT NULL,
-  `foto_mahasiswa` blob DEFAULT NULL,
   `email_mahasiswa` varchar(254) NOT NULL,
   `gender_mahasiswa` varchar(10) NOT NULL,
   `alamat_mahasiswa` varchar(255) NOT NULL,
@@ -100,10 +95,10 @@ CREATE TABLE `mahasiswa` (
 
 /*Data for the table `mahasiswa` */
 
-insert  into `mahasiswa`(`nim_mahasiswa`,`nama_mahasiswa`,`foto_mahasiswa`,`email_mahasiswa`,`gender_mahasiswa`,`alamat_mahasiswa`,`fakultas_mahasiswa`,`prodi_mahasiswa`) values 
-('1910817110002','Siti','','siti@gmail.com','Laki-laki','disana','Teknik','Teknologi Informasi'),
-('1910817110008','Muhammad Nur Abdi','','1910817110008@mhs.ulm.ac.id','Laki-laki','disini','Teknik','Teknologi Informasi'),
-('1910817310007','Irvan Aulia Luthfi','','1910817310005@mhs.ulm.ac.id','Laki-laki','Jl. Budi Utomo','Teknik','Teknologi Informasi');
+insert  into `mahasiswa`(`nim_mahasiswa`,`nama_mahasiswa`,`email_mahasiswa`,`gender_mahasiswa`,`alamat_mahasiswa`,`fakultas_mahasiswa`,`prodi_mahasiswa`) values 
+('1910817110002','Siti','siti@gmail.com','Laki-laki','disana','Teknik','Teknologi Informasi'),
+('1910817110008','Muhammad Nur Abdi','1910817110008@mhs.ulm.ac.id','Laki-laki','disini','Teknik','Teknologi Informasi'),
+('1910817310007','Irvan Aulia Luthfi','1910817310005@mhs.ulm.ac.id','Laki-laki','Jl. Budi Utomo','Teknik','Teknologi Informasi');
 
 /*Table structure for table `presensi` */
 
@@ -122,10 +117,6 @@ CREATE TABLE `presensi` (
 
 /*Data for the table `presensi` */
 
-insert  into `presensi`(`kode_presensi`,`pertemuan`,`waktu_mulai`,`waktu_akhir`,`kode_kelas`) values 
-('P161230770',1,'2021-11-24 23:00:00','2021-11-24 23:30:00','MK745'),
-('P433196601',1,'2021-11-25 02:34:00','2021-11-26 02:34:00','MK328');
-
 /*Table structure for table `status_presensi` */
 
 DROP TABLE IF EXISTS `status_presensi`;
@@ -143,11 +134,6 @@ CREATE TABLE `status_presensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `status_presensi` */
-
-insert  into `status_presensi`(`kode_status_presensi`,`status_presensi`,`nim_mahasiswa`,`kode_presensi`) values 
-('S218690127','Sakit','1910817310007','P433196601'),
-('S305344443','Hadir','1910817110002','P433196601'),
-('S319331389','Tanpa Keterangan','1910817110008','P433196601');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
