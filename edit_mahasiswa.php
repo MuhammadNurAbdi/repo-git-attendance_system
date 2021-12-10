@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("logic/koneksi.php");
 if (empty($_SESSION['login_user']))
     header('location: login.php');
 if ($_SESSION['level_user'] != "Admin")
@@ -97,7 +98,6 @@ if ($_SESSION['level_user'] != "Admin")
             </div>
 
             <?php
-            require_once("logic/koneksi.php");
             $data = $pdo_conn->prepare("SELECT * FROM mahasiswa WHERE nim_mahasiswa=" . $_GET["nim"]); //query untuk mengambil data tabel
             $data->execute();
             $result = $data->fetchAll();
@@ -105,6 +105,7 @@ if ($_SESSION['level_user'] != "Admin")
             $data_akun = $pdo_conn->prepare("SELECT * FROM akun WHERE username=" . $_GET["nim"]); //query untuk mengambil data tabel
             $data_akun->execute();
             $result_akun = $data_akun->fetchAll();
+
             ?>
 
             <div class="tab-content">
@@ -119,7 +120,8 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nim">NIM</label>
-                                    <input type="text" maxlength="13" name="nim" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nim_mahasiswa"]; ?>" required />
+                                    <input id="nim" onkeyup="checkDup();" type="text" maxlength="13" name="nim" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nim_mahasiswa"]; ?>" required />
+                                    <span id='message_nim'></span>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
@@ -135,7 +137,7 @@ if ($_SESSION['level_user'] != "Admin")
                                         Laki-laki
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="gender" id="inlineRadio1" value="Perempuan" <?php
+                                        <input type="radio" name="gender" id="inlineRadio2" value="Perempuan" <?php
                                                                                                                 if ($result[0]['gender_mahasiswa'] == "Perempuan")
                                                                                                                     echo "checked"
                                                                                                                 ?> />
@@ -212,6 +214,40 @@ if ($_SESSION['level_user'] != "Admin")
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Not matching';
                 button.disabled = true;
+            }
+        }
+
+
+        function checkDup() {
+            <?php
+            $data_nim = $pdo_conn->prepare("SELECT nim_mahasiswa, username FROM mahasiswa JOIN akun"); //query untuk mengambil data tabel
+            $data_nim->execute();
+            ?>
+
+            var nim_data = <?php echo json_encode($data_nim->fetchall()); ?>;
+            var nim = document.getElementById('nim').value;
+            const button = document.getElementById('save_update');
+            var BreakException = {};
+            if (nim_data && nim != <?php echo $_GET["nim"]; ?>) {
+                try {
+                    nim_data.forEach(row => {
+
+                        if (nim === row["nim_mahasiswa"] || nim === row["username"]) {
+                            document.getElementById('message_nim').style.color = 'red';
+                            document.getElementById('message_nim').innerHTML = 'NIM sudah terdaftar!';
+                            button.disabled = true;
+                            throw BreakException;
+                        } else {
+                            document.getElementById('message_nim').innerHTML = '';
+                            button.disabled = false;
+                        }
+                    });
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            } else {
+                document.getElementById('message_nim').innerHTML = '';
+                button.disabled = false;
             }
         }
     </script>

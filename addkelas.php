@@ -170,8 +170,6 @@ if ($_SESSION['level_user'] != "Admin")
             if (nip_data) {
                 try {
                     nip_data.forEach(row => {
-                        console.log(nip);
-                        console.log(row["nip_dosen"]);
                         if (nip === row["nip_dosen"]) {
                             document.getElementById('message').style.color = 'green';
                             document.getElementById('message').innerHTML = 'Dosen terdaftar di database';

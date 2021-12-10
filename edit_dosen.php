@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("logic/koneksi.php");
 if (empty($_SESSION['login_user']))
     header('location: login.php');
 if ($_SESSION['level_user'] != "Admin")
@@ -97,7 +98,6 @@ if ($_SESSION['level_user'] != "Admin")
             </div>
 
             <?php
-            require_once("logic/koneksi.php");
             $data = $pdo_conn->prepare("SELECT * FROM dosen WHERE nip_dosen=" . $_GET["nip"]); //query untuk mengambil data tabel
             $data->execute();
             $result = $data->fetchAll();
@@ -119,7 +119,8 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIP</label>
-                                    <input type="text" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nip_dosen"]; ?>" required />
+                                    <input id="nip" type="text" onkeyup="checkDup();" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nip_dosen"]; ?>" required />
+                                    <span id='message_nip'></span>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
@@ -135,7 +136,7 @@ if ($_SESSION['level_user'] != "Admin")
                                         Laki-laki
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="gender" id="inlineRadio1" value="Perempuan" <?php
+                                        <input type="radio" name="gender" id="inlineRadio2" value="Perempuan" <?php
                                                                                                                 if ($result[0]['gender_dosen'] == "Perempuan")
                                                                                                                     echo "checked"
                                                                                                                 ?> />
@@ -213,6 +214,39 @@ if ($_SESSION['level_user'] != "Admin")
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Not matching';
                 button.disabled = true;
+            }
+        }
+
+        function checkDup() {
+            <?php
+            $data_nip = $pdo_conn->prepare("SELECT nip_dosen, username FROM dosen JOIN akun"); //query untuk mengambil data tabel
+            $data_nip->execute();
+            ?>
+
+            var nip_data = <?php echo json_encode($data_nip->fetchall()); ?>;
+            var nip = document.getElementById('nip').value;
+            const button = document.getElementById('save_update');
+            var BreakException = {};
+            if (nip_data && nip != <?php echo $_GET["nip"]; ?>) {
+                try {
+                    nip_data.forEach(row => {
+
+                        if (nip === row["nip_dosen"] || nip === row["username"]) {
+                            document.getElementById('message_nip').style.color = 'red';
+                            document.getElementById('message_nip').innerHTML = 'NIP sudah terdaftar!';
+                            button.disabled = true;
+                            throw BreakException;
+                        } else {
+                            document.getElementById('message_nip').innerHTML = '';
+                            button.disabled = false;
+                        }
+                    });
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            } else {
+                document.getElementById('message_nip').innerHTML = '';
+                button.disabled = false;
             }
         }
     </script>
