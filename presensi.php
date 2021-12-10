@@ -125,10 +125,11 @@ if ($_SESSION['level_user'] != "Dosen")
         <div class="row"></div>
         <table id="customers">
             <tr>
-                <td colspan="4" class="title">Daftar Pertemuan</td>
+                <td colspan="5" class="title">Daftar Pertemuan</td>
             </tr>
             <tr>
                 <th>Pertemuan Ke</th>
+                <th>Pokok Bahasan</th>
                 <th>Dosen Pengajar</th>
                 <th>Waktu Presensi</th>
                 <th>Aksi</th>
@@ -140,6 +141,7 @@ if ($_SESSION['level_user'] != "Dosen")
             ?>
                     <tr>
                         <td><?php echo $row['pertemuan'] ?></td>
+                        <td><?php echo $row['bahasan'] ?></td>
                         <td><?php echo $row['nama_dosen'] ?></td>
                         <td>PRESENSI MANDIRI<br> Mulai Berlaku<br> <?php echo tgl_indo(date('d-m-Y H:i', strtotime($row['waktu_mulai']))) ?><br> s.d
                             <br> <?php echo tgl_indo(date('d-m-Y H:i', strtotime($row['waktu_akhir']))) ?>

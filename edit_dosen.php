@@ -115,7 +115,9 @@ if ($_SESSION['level_user'] != "Admin")
                             <div class="half-width">
                                 <div class="col-full">
                                     <label for="nama_lengkap">Nama Lengkap</label>
-                                    <input type="text" maxlength="25" name="nama" placeholder="Masukan Nama" class="input-field" value="<?php echo $result[0]["nama_dosen"]; ?>" required />
+                                    <span class="hovertext" data-hover="Hanya Dapat Diisi Dengan Huruf dan Spasi">
+                                        <input type="text" pattern="([A-zÀ-ž\s]){2,}" maxlength="25" name="nama" placeholder="Masukan Nama" class="input-field" value="<?php echo $result[0]["nama_dosen"]; ?>" required />
+                                    </span>
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIP</label>
