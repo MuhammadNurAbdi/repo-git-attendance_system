@@ -103,11 +103,11 @@ if ($_SESSION['level_user'] != "Admin")
                         <div class="user-details">
                             <div class="input-box">
                                 <span class="details">Mata Kuliah</span>
-                                <input type="text" maxlength="16" placeholder="Masukkan mata kuliah" name="InputMatkul" required>
+                                <input type="text" maxlength="64" placeholder="Masukkan mata kuliah" name="InputMatkul" required>
                             </div>
                             <div class="input-box">
-                                <span class="details">Hari</span>
-                                <input type="text" maxlength="16" placeholder="Masukkan hari" name="InputHari" required>
+                                <span class="details">Semester</span>
+                                <input type="number" maxlength="2" placeholder="Masukkan Semester" name="InputSemester" required>
                             </div>
                             <div class="input-box">
                                 <span class="details">Jam</span>

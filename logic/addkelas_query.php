@@ -16,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $sql = $pdo_conn->prepare("INSERT INTO kelas (kode_kelas, nama_kelas, hari, jam_awal, jam_akhir, ruang, nip_dosen) 
-    VALUES (:kode_kelas, :nama_kelas, :hari, :jam_awal, :jam_akhir, :ruang, :nip)");
+    $sql = $pdo_conn->prepare("INSERT INTO kelas (kode_kelas, nama_kelas, semester, jam_awal, jam_akhir, ruang, nip_dosen) 
+    VALUES (:kode_kelas, :nama_kelas, :semester, :jam_awal, :jam_akhir, :ruang, :nip)");
     $result = $sql->execute(array(
         ':kode_kelas' => $id,
         ':nama_kelas' => $_POST['InputMatkul'],
-        ':hari' => $_POST['InputHari'],
+        ':semester' => $_POST['InputSemester'],
         ':jam_awal' => $_POST['InputJamAwal'],
         ':jam_akhir' => $_POST['InputJamAkhir'],
         ':ruang' => $_POST['InputRuang'],
