@@ -104,17 +104,18 @@ if ($_SESSION['level_user'] != "Dosen")
                     </div>
                     <div class="col-full">
                         <label for="tanggal">Mulai Presensi</label>
-                        <input type="datetime-local" name="waktu_mulai" placeholder="" class="input-field" value="<?php echo date('Y-m-d\TH:i', strtotime($result_presensi[0]['waktu_mulai'])); ?>" required />
+                        <input id="waktu_mulai" type="datetime-local" name="waktu_mulai" placeholder="" class="input-field" value="<?php echo date('Y-m-d\TH:i', strtotime($result_presensi[0]['waktu_mulai'])); ?>" required />
                     </div>
                     <div class="col-full">
                         <label for="tanggal">Akhir Presensi</label>
-                        <input type="datetime-local" name="waktu_akhir" placeholder="" class="input-field" value="<?php echo date('Y-m-d\TH:i', strtotime($result_presensi[0]['waktu_akhir'])); ?>" required />
+                        <input id="waktu_akhir" type="datetime-local" name="waktu_akhir" placeholder="" class="input-field" value="<?php echo date('Y-m-d\TH:i', strtotime($result_presensi[0]['waktu_akhir'])); ?>" required />
+                        <span id='message'></span>
                     </div>
                     <input type="text" name="kode_kelas" placeholder="" class="input-field" value="<?php echo $_GET['id'] ?>" hidden />
                     <input type="text" name="kode_presensi" placeholder="" class="input-field" value="<?php echo $_GET['presensi'] ?>" hidden />
                     <div class="box-mid">
                         <input type="button" class="btn-batal" value="Batal" onclick="location.href='presensi.php?id=<?php echo $_GET['id'] ?>';">
-                        <input type="submit" class="btn-buat" name="save_update" value="Edit">
+                        <input type="submit" onclick="return checkDate();" class="btn-buat" name="save_update" value="Edit">
                     </div>
             </form>
         </div>
@@ -138,6 +139,20 @@ if ($_SESSION['level_user'] != "Dosen")
                 closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
             } else {
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+            }
+        }
+
+        function checkDate() {
+            var first_date = new Date(document.getElementById('waktu_mulai').value);
+            var second_date = new Date(document.getElementById('waktu_akhir').value);
+            const button = document.getElementById('submit');
+            if (first_date.getTime() < second_date.getTime()) {
+                document.getElementById('message').innerHTML = '';
+                return true;
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Waktu awal presensi harus lebih awal dari akhir presensi!';
+                return false;
             }
         }
     </script>
