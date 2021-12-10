@@ -81,13 +81,11 @@ if ($_SESSION['level_user'] != "Admin")
     <?php
 
 
-    function getSubjects()
-    {
-        require_once("logic/koneksi.php");
-        $data = $pdo_conn->prepare("SELECT nip_dosen FROM dosen"); //query untuk mengambil data tabel
-        $data->execute();
-        return json_encode($data->fetchall());
-    }
+    require_once("logic/koneksi.php");
+    $data = $pdo_conn->prepare("SELECT nama_dosen, nip_dosen FROM dosen"); //query untuk mengambil data tabel
+    $data->execute();
+    $result = $data->fetchall();
+
     ?>
 
     <section class="home-section">
@@ -129,9 +127,17 @@ if ($_SESSION['level_user'] != "Admin")
                                 </select>
                             </div>
                             <div class="input-box">
-                                <span class="details">NIP Dosen Pengampu</span>
-                                <input id="nip" maxlength="18" type="text" placeholder="Masukkan nip dosen" name="InputDosen" onkeyup='check();' required>
-                                <span id='message'></span>
+                                <span class="details">Dosen Pengampu</span>
+                                <select name="InputDosen" required>
+                                    <option value="">-- Pilih Dosen --</option>
+                                    <?php
+                                    if (!(empty($result))) {
+                                        foreach ($result as $row) { ?>
+                                            <option value="<?php echo $row['nip_dosen'] ?>"><?php echo $row['nip_dosen'] ?> - <?php echo $row['nama_dosen'] ?></option>
+                                    <?php }
+                                    } ?>
+
+                                </select>
                             </div>
                         </div>
 
@@ -166,35 +172,6 @@ if ($_SESSION['level_user'] != "Admin")
                 closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
             } else {
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
-            }
-        }
-
-        function check() {
-            var nip_data = <?php echo getSubjects(); ?>;
-            var nip = document.getElementById('nip').value;
-            const button = document.getElementById('submit');
-            var BreakException = {};
-            if (nip_data) {
-                try {
-                    nip_data.forEach(row => {
-                        if (nip === row["nip_dosen"]) {
-                            document.getElementById('message').style.color = 'green';
-                            document.getElementById('message').innerHTML = 'Dosen terdaftar di database';
-                            button.disabled = false;
-                            throw BreakException;
-                        } else {
-                            document.getElementById('message').style.color = 'red';
-                            document.getElementById('message').innerHTML = 'Dosen tidak ditemukan';
-                            button.disabled = true;
-                        }
-                    });
-                } catch (e) {
-                    if (e !== BreakException) throw e;
-                }
-            } else {
-                document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerHTML = 'Tidak ada dosen di database, silakan tambahkan terlebih dahulu';
-                button.disabled = true;
             }
         }
     </script>
