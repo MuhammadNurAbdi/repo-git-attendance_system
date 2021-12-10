@@ -119,7 +119,14 @@ if ($_SESSION['level_user'] != "Admin")
                             </div>
                             <div class="input-box">
                                 <span class="details">Ruang Kelas</span>
-                                <input type="text" maxlength="20" placeholder="Masukkan kelas" name="InputRuang" required>
+                                <select name="InputRuang" required>
+                                    <option value="">-- Pilih Ruang Kelas --</option>
+                                    <option value="A15">A15</option>
+                                    <option value="A14">A14</option>
+                                    <option value="Lab Jarkom">Lab Jarkom</option>
+                                    <option value="Lab RPL">Lab RPL</option>
+                                    <option value="B1">B1</option>
+                                </select>
                             </div>
                             <div class="input-box">
                                 <span class="details">NIP Dosen Pengampu</span>
