@@ -146,7 +146,7 @@ if ($_SESSION['level_user'] != "Dosen")
                         </td>
                         <td>
                             <input type="button" onclick="location.href='edit_presensi.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="btn-edit" value="Edit"><br>
-                            <input type="button" onclick="location.href='logic/delete_presensi.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="btn-hapus" value="Hapus"><br>
+                            <a type="button" onclick="return confirmBtn();" href='logic/delete_presensi.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>' class="btn-hapus">Hapus</a><br>
                             <input type="button" onclick="location.href='kelolapresensi.php?id=<?php echo $_GET['id'] ?>&presensi=<?php echo $row['kode_presensi'] ?>';" class="btn-cetak" value="Kelola">
                         </td>
                     </tr>
@@ -175,6 +175,14 @@ if ($_SESSION['level_user'] != "Dosen")
                 closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
             } else {
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+            }
+        }
+
+        function confirmBtn() {
+            if (confirm('Apakah anda yakin ingin menghapus?')) {
+                return true;
+            } else {
+                return false;
             }
         }
     </script>

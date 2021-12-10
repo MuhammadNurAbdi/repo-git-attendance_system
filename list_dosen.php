@@ -112,7 +112,7 @@ if ($_SESSION['level_user'] != "Admin")
                         <td><?php echo $row["fakultas_dosen"]; ?></td>
                         <td><?php echo $row["prodi_dosen"]; ?></td>
                         <td><a class="button" href='edit_dosen.php?nip=<?php echo $row['nip_dosen']; ?>'>Edit</a></td>
-                        <td><a class="button" href='logic/delete_dosen.php?nip=<?php echo $row['nip_dosen']; ?>'>Delete</a></td>
+                        <td><a class="button" onclick="return confirmBtn();" href='logic/delete_dosen.php?nip=<?php echo $row['nip_dosen']; ?>'>Delete</a></td>
                     </tr>
             <?php
                 }
@@ -136,6 +136,14 @@ if ($_SESSION['level_user'] != "Admin")
                 closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
             } else {
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+            }
+        }
+
+        function confirmBtn() {
+            if (confirm('Apakah anda yakin ingin menghapus?')) {
+                return true;
+            } else {
+                return false;
             }
         }
     </script>

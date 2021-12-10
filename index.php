@@ -93,8 +93,8 @@ if (empty($_SESSION['login_user']))
                         <div>
                             <div class="column">
                                 <p id="rcorners1"><?php echo $row["nama_kelas"]; ?> </p>
-                                <p id="rcorners2"> <a href="#">
-                                        <button onclick="location.href='logic/delete_kelas.php?id=<?php echo $row['kode_kelas']; ?>';" class="btn-hapus"> Hapus Kelas
+                                <p id="rcorners2"> <a href="logic/delete_kelas.php?id=<?php echo $row['kode_kelas']; ?>">
+                                        <button onclick="return confirmBtn();" class="btn-hapus"> Hapus Kelas
                                         </button>
                                     </a></p>
                             </div>
@@ -172,6 +172,14 @@ if (empty($_SESSION['login_user']))
                 closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
             } else {
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+            }
+        }
+
+        function confirmBtn() {
+            if (confirm('Apakah anda yakin ingin menghapus?')) {
+                return true;
+            } else {
+                return false;
             }
         }
     </script>
