@@ -16,11 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $sql = $pdo_conn->prepare("INSERT INTO presensi (kode_presensi, pertemuan, waktu_mulai, waktu_akhir, kode_kelas) 
-    VALUES (:kode_presensi, :pertemuan, :waktu_mulai, :waktu_akhir, :kode_kelas)");
+    $sql = $pdo_conn->prepare("INSERT INTO presensi (kode_presensi, pertemuan, bahasan, waktu_mulai, waktu_akhir, kode_kelas) 
+    VALUES (:kode_presensi, :pertemuan, :bahasan, :waktu_mulai, :waktu_akhir, :kode_kelas)");
     $result = $sql->execute(array(
         ':kode_presensi' => $id,
         ':pertemuan' => $_POST['pertemuan'],
+        ':bahasan' => $_POST['bahasan'],
         ':waktu_mulai' => $_POST['waktu_mulai'],
         ':waktu_akhir' => $_POST['waktu_akhir'],
         ':kode_kelas' => $_POST['kode_kelas']

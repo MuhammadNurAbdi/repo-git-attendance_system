@@ -98,6 +98,10 @@ if ($_SESSION['level_user'] != "Dosen")
                         <input type="number" min="1" max="2147483647" name="pertemuan" placeholder="" class="input-field" required />
                     </div>
                     <div class="col-full">
+                        <label for="tanggal">Pokok Bahasan</label>
+                        <input type="text" min="1" max="254" name="bahasan" placeholder="" class="input-field" required />
+                    </div>
+                    <div class="col-full">
                         <label for="tanggal">Mulai Presensi</label>
                         <input id="waktu_mulai" type="datetime-local" name="waktu_mulai" placeholder="" class="input-field" required />
                     </div>
