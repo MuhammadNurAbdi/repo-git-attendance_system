@@ -50,11 +50,27 @@ session_start();
               <div class="button input-box">
                 <input type="submit" value="Submit" />
               </div>
+              <div class="text small-text">Lupa Password? <label for="flip">Bantuan</label></div>
+            </div>
+          </form>
+        </div>
+        <div class="signup-form">
+          <div class="title">Lupa Password?</div>
+          <form action="#">
+            <div class="input-boxes">
+              <div class="text small-text">
+                <p>Apabila anda melupakan <b>Password</b> dapat menghubungi admin pada email atau nomor telepon dibawah</p>
+              </div>
+              <div class="text small-text"><b>Email</b><br>aio.for.universe@gmail.com</div>
+              <div class="text small-text"><b>Telepon</b><br>+62 813-5170-5500</div>
+              <div class="text small-text">Ingat Password? <label for="flip">Login</label>
+              </div>
             </div>
           </form>
         </div>
       </div>
     </div>
+
   </div>
 </body>
 
