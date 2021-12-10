@@ -110,7 +110,8 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIP</label>
-                                    <input type="text" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" required />
+                                    <input id="nip" type="text" onkeyup="checkDup();" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" required />
+                                    <span id='message_nip'></span>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
@@ -123,7 +124,7 @@ if ($_SESSION['level_user'] != "Admin")
                                         Laki-laki
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="gender" id="inlineRadio1" value="Perempuan" />
+                                        <input type="radio" name="gender" id="inlineRadio2" value="Perempuan" />
                                         Perempuan
                                     </label>
                                 </div>
@@ -197,6 +198,44 @@ if ($_SESSION['level_user'] != "Admin")
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Not matching';
                 button.disabled = true;
+            }
+        }
+
+        <?php
+        function getSubjects()
+        {
+            require_once("logic/koneksi.php");
+            $data = $pdo_conn->prepare("SELECT nip_dosen, username FROM dosen JOIN akun"); //query untuk mengambil data tabel
+            $data->execute();
+            return json_encode($data->fetchall());
+        }
+        ?>
+
+        function checkDup() {
+            var nip_data = <?php echo getSubjects(); ?>;
+            var nip = document.getElementById('nip').value;
+            const button = document.getElementById('save_update');
+            var BreakException = {};
+            if (nip_data) {
+                try {
+                    nip_data.forEach(row => {
+
+                        if (nip === row["nip_dosen"] || nip === row["username"]) {
+                            document.getElementById('message_nip').style.color = 'red';
+                            document.getElementById('message_nip').innerHTML = 'NIP sudah terdaftar!';
+                            button.disabled = true;
+                            throw BreakException;
+                        } else {
+                            document.getElementById('message_nip').innerHTML = '';
+                            button.disabled = false;
+                        }
+                    });
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            } else {
+                document.getElementById('message_nip').innerHTML = '';
+                button.disabled = false;
             }
         }
     </script>

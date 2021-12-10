@@ -95,7 +95,22 @@ if ($_SESSION['level_user'] != "Dosen")
                     <div class="title">Tambah Presensi Baru - <?php echo $result[0]['nama_kelas'] ?></div>
                     <div class="col-full">
                         <label for="tanggal">Pertemuan Ke</label>
-                        <input type="number" min="1" max="2147483647" name="pertemuan" placeholder="" class="input-field" required />
+                        <select name="pertemuan" required>
+                            <option value="">-- Pilih Pertemuan --</option>
+                            <?php
+                            for ($i = 1; $i <= 16; $i++) {
+                                $sql = $pdo_conn->prepare('SELECT pertemuan FROM presensi WHERE pertemuan = :pertemuan');
+                                $sql->execute(array(
+                                    ':pertemuan' => $i
+                                ));
+                                $row = $sql->fetch(PDO::FETCH_ASSOC);
+                                if (empty($row['pertemuan'])) { ?>
+                                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <?php }
+                            }
+                            ?>
+
+                        </select>
                     </div>
                     <div class="col-full">
                         <label for="tanggal">Pokok Bahasan</label>

@@ -110,7 +110,8 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIM</label>
-                                    <input type="text" maxlength="13" name="nim" placeholder="Masukan NIM" class="input-field" required />
+                                    <input id="nim" onkeyup="checkDup();" type="text" maxlength="13" name="nim" placeholder="Masukan NIM" class="input-field" required />
+                                    <span id='message_nim'></span>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
@@ -123,7 +124,7 @@ if ($_SESSION['level_user'] != "Admin")
                                         Laki-laki
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="gender" id="inlineRadio1" value="Perempuan" />
+                                        <input type="radio" name="gender" id="inlineRadio2" value="Perempuan" />
                                         Perempuan
                                     </label>
                                 </div>
@@ -197,6 +198,44 @@ if ($_SESSION['level_user'] != "Admin")
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Not matching';
                 button.disabled = true;
+            }
+        }
+
+        <?php
+        function getSubjects()
+        {
+            require_once("logic/koneksi.php");
+            $data = $pdo_conn->prepare("SELECT nim_mahasiswa, username FROM mahasiswa JOIN akun"); //query untuk mengambil data tabel
+            $data->execute();
+            return json_encode($data->fetchall());
+        }
+        ?>
+
+        function checkDup() {
+            var nim_data = <?php echo getSubjects(); ?>;
+            var nim = document.getElementById('nim').value;
+            const button = document.getElementById('save_update');
+            var BreakException = {};
+            if (nim_data) {
+                try {
+                    nim_data.forEach(row => {
+
+                        if (nim === row["nim_mahasiswa"] || nim === row["username"]) {
+                            document.getElementById('message_nim').style.color = 'red';
+                            document.getElementById('message_nim').innerHTML = 'NIM sudah terdaftar!';
+                            button.disabled = true;
+                            throw BreakException;
+                        } else {
+                            document.getElementById('message_nim').innerHTML = '';
+                            button.disabled = false;
+                        }
+                    });
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            } else {
+                document.getElementById('message_nim').innerHTML = '';
+                button.disabled = false;
             }
         }
     </script>

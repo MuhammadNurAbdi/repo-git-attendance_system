@@ -94,7 +94,8 @@ if ($_SESSION['level_user'] != "Admin")
                         <div class="half-width">
                             <div class="col-full">
                                 <label for="nama_lengkap">Username</label>
-                                <input type="text" maxlength="25" name="username" placeholder="Masukan Username" class="input-field" required />
+                                <input id="username" onkeyup="checkDup()" type="text" maxlength="25" name="username" placeholder="Masukan Username" class="input-field" required />
+                                <span id='message_user'></span>
                             </div>
 
                             <div class="col-full">
@@ -152,6 +153,44 @@ if ($_SESSION['level_user'] != "Admin")
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Not matching';
                 button.disabled = true;
+            }
+        }
+
+        <?php
+        function getSubjects()
+        {
+            require_once("logic/koneksi.php");
+            $data = $pdo_conn->prepare("SELECT username FROM akun"); //query untuk mengambil data tabel
+            $data->execute();
+            return json_encode($data->fetchall());
+        }
+        ?>
+
+        function checkDup() {
+            var user_data = <?php echo getSubjects(); ?>;
+            var username = document.getElementById('username').value;
+            const button = document.getElementById('save_update');
+            var BreakException = {};
+            if (user_data) {
+                try {
+                    user_data.forEach(row => {
+
+                        if (username === row["username"]) {
+                            document.getElementById('message_user').style.color = 'red';
+                            document.getElementById('message_user').innerHTML = 'Username sudah terdaftar!';
+                            button.disabled = true;
+                            throw BreakException;
+                        } else {
+                            document.getElementById('message_user').innerHTML = '';
+                            button.disabled = false;
+                        }
+                    });
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            } else {
+                document.getElementById('message_nip').innerHTML = '';
+                button.disabled = false;
             }
         }
     </script>
