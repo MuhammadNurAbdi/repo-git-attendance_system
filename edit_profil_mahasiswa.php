@@ -120,7 +120,7 @@ if ($_SESSION['level_user'] != "Mahasiswa")
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
-                                    <input type="text" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_mahasiswa"]; ?>" required />
+                                    <input type="email" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_mahasiswa"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="gender">Jenis Kelamin</label>

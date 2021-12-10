@@ -112,7 +112,7 @@ if ($_SESSION['level_user'] != "Admin")
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
-                                    <input type="text" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" required />
+                                    <input type="email" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="gender">Jenis Kelamin</label>
