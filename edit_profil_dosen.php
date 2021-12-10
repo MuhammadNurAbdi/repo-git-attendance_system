@@ -116,11 +116,13 @@ if ($_SESSION['level_user'] != "Dosen")
                                 </div>
                                 <div class="col-full">
                                     <label for="no_nip">NIP</label>
-                                    <input type="text" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nip_dosen"]; ?>" required disabled />
+                                    <span class="hovertext" data-hover="Data Pada Form Ini Tidak Dapat Diedit">
+                                        <input type="text" maxlength="18" name="nip" placeholder="Masukan NIP" class="input-field" value="<?php echo $result[0]["nip_dosen"]; ?>" required disabled />
+                                    </span>
                                 </div>
                                 <div class="col-full">
                                     <label for="nama_email">E-mail</label>
-                                    <input type="text" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_dosen"]; ?>" required />
+                                    <input type="email" maxlength="254" name="email" placeholder="Masukan E-mail" class="input-field" value="<?php echo $result[0]["email_dosen"]; ?>" required />
                                 </div>
                                 <div class="col-full">
                                     <label for="gender">Jenis Kelamin</label>
