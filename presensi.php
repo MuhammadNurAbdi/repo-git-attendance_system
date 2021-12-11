@@ -155,7 +155,7 @@ if ($_SESSION['level_user'] != "Dosen")
                 <?php }
             } else { ?>
                 <tr>
-                    <td colspan="4">Tidak ada data</td>
+                    <td colspan="5">Tidak ada data</td>
                 </tr>
             <?php } ?>
         </table>

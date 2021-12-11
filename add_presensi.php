@@ -99,9 +99,10 @@ if ($_SESSION['level_user'] != "Dosen")
                             <option value="">-- Pilih Pertemuan --</option>
                             <?php
                             for ($i = 1; $i <= 16; $i++) {
-                                $sql = $pdo_conn->prepare('SELECT pertemuan FROM presensi WHERE pertemuan = :pertemuan');
+                                $sql = $pdo_conn->prepare('SELECT pertemuan FROM presensi WHERE pertemuan = :pertemuan AND kode_kelas = :kode_kelas');
                                 $sql->execute(array(
-                                    ':pertemuan' => $i
+                                    ':pertemuan' => $i,
+                                    ':kode_kelas' => $_GET['id']
                                 ));
                                 $row = $sql->fetch(PDO::FETCH_ASSOC);
                                 if (empty($row['pertemuan'])) { ?>
