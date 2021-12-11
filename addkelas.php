@@ -105,7 +105,7 @@ if ($_SESSION['level_user'] != "Admin")
                             </div>
                             <div class="input-box">
                                 <span class="details">Semester</span>
-                                <input type="number" maxlength="2" placeholder="Masukkan Semester" name="InputSemester" required>
+                                <input type="number" min="1" max="14" placeholder="Masukkan Semester" name="InputSemester" required>
                             </div>
                             <div class="input-box">
                                 <span class="details">Jam</span>
